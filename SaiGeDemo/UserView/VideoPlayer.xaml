@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="SaiGeDemo.UserView.VideoPlayer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SaiGeDemo.UserView"
+             xmlns:aforge="clr-namespace:AForge.Controls;assembly=AForge.Controls"
+             xmlns:wfi="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Thickness x:Key="ControlMargin">0 5 0 0</Thickness>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+
+        <GroupBox  
+                  Grid.Column="0"
+                  Margin="4 2"
+                  Header="操作列表">
+            <AdornerDecorator>
+
+                <StackPanel>
+                    <Button 
+                    Margin="{StaticResource ControlMargin}"
+                    Content="导入视频"
+                    Style="{DynamicResource MahApps.Styles.Button.Square}"
+                        Click="Button_Click"/>
+                    <Button 
+                    Margin="{StaticResource ControlMargin}"
+                    Content="打开摄像头"
+                    Style="{DynamicResource MahApps.Styles.Button.Square}" 
+                        Click="Button_Click_1"/>
+
+                    <Button 
+                    Margin="{StaticResource ControlMargin}"
+                    Content="停止播放"
+                    Style="{DynamicResource MahApps.Styles.Button.Square}" 
+                        Click="Button_Click_2"/>
+                    <Separator/>
+                    <Separator/>
+
+                    <Button 
+                    Margin="{StaticResource ControlMargin}"
+                    Content="默认"
+                    Style="{DynamicResource MahApps.Styles.Button.Square}" 
+                        Click="Button_Click_3"/>
+                    <Button 
+                    Margin="{StaticResource ControlMargin}"
+                    Content="颜色空间转换"
+                    Style="{DynamicResource MahApps.Styles.Button.Square}" 
+                        Click="Button_Click_3"/>
+                    <Button 
+                    Margin="{StaticResource ControlMargin}"
+                    Content="找轮廓"
+                    Style="{DynamicResource MahApps.Styles.Button.Square}" 
+                        Click="Button_Click_3"/>
+                </StackPanel>
+            </AdornerDecorator>
+        </GroupBox>
+
+        <GroupBox  
+                  Height="400" Width="300"
+                  Grid.Column="1"
+                  Margin="4 2"
+                  Header="视频播放">
+            <AdornerDecorator>
+
+                <wfi:WindowsFormsHost Background="Transparent" Grid.Column="1" >
+                    <aforge:VideoSourcePlayer x:Name="Player"  />
+                </wfi:WindowsFormsHost>
+            </AdornerDecorator>
+        </GroupBox>
+        
+    </Grid>
+</UserControl>
